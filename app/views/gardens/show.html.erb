@@ -1,0 +1,24 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @garden.banner_url %>');">
+  <div class="container text-center">
+    <h1 style="font-size: 44px"><%= @garden.name %></h1>
+  </div>
+</div>
+
+<div class="plants-grid">
+  <% @garden.plants.each do |plant| %>
+    <div class="plant-card" style="background-image: url('<%= plant.image_url %>')">
+      <p class="plant-title"><%= plant.name %></p>
+      <%= link_to plant_path(plant), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <i class="fa-solid fa-circle-xmark delete-plant-btn"></i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<hr>
+
+<%= simple_form_for [@garden, @plant], html: { class: "plant-form" } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :image_url %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
