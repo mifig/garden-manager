@@ -1,0 +1,16 @@
+.plant-tags {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  gap: 12px;
+  justify-content: start;
+}
+
+.plant-tag {
+  padding: 8px 12px;
+  background: orange;
+  color: white;
+  font-weight: bold;
+  font-size: 10px;
+}

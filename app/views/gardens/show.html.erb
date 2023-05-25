@@ -7,10 +7,16 @@
 <div class="plants-grid">
   <% @garden.plants.each do |plant| %>
     <div class="plant-card" style="background-image: url('<%= plant.image_url %>')">
+      <div class="plant-tags">
+        <% plant.tags.each do |tag| %>
+          <p class="plant-tag"><%= tag.name %></p>
+        <% end %>
+      </div>
       <p class="plant-title"><%= plant.name %></p>
       <%= link_to plant_path(plant), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
         <i class="fa-solid fa-circle-xmark delete-plant-btn"></i>
       <% end %>
+      <%= link_to "+ Add a tag", new_plant_plant_tag_path(plant), class: "add-tag-btn" %>
     </div>
   <% end %>
 </div>
